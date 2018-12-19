@@ -66,7 +66,7 @@ class StaticStackTest {
     @TestFactory
     DynamicTest[] peek() {
         return new DynamicTest[] {
-                dynamicTest("Peeking at a stack return the item on top.",
+                dynamicTest("Peeking at a stack returns the item on top.",
                         () -> assertEquals(items[items.length - 1], stack.peek())),
                 dynamicTest("Peeking at a stack does not remove the item on top.",
                         () -> assertEquals(items[items.length - 1], stack.peek())),
@@ -78,14 +78,14 @@ class StaticStackTest {
     @TestFactory
     DynamicTest[] size() {
         return new DynamicTest[] {
-                dynamicTest("Size returns the correct size of the stack.",
+                dynamicTest("Size returns the number of items on the stack.",
                         () -> assertEquals(items.length, stack.size())),
-                dynamicTest("Pushing an item to the stack changes its size.", () -> {
+                dynamicTest("Pushing an item to the stack changes increments size.", () -> {
                     assertEquals(items.length, stack.size());
                     stack.push(5);
                     assertEquals(items.length + 1, stack.size());
                 }),
-                dynamicTest("Popping an item from the stack changes its size.", () -> {
+                dynamicTest("Popping an item from the stack changes decrements size.", () -> {
                     assertEquals(items.length + 1, stack.size());
                     stack.pop();
                     assertEquals(items.length, stack.size());
@@ -97,7 +97,7 @@ class StaticStackTest {
                 }),
                 dynamicTest("An empty stack returns with 0 size.",
                         () -> assertEquals(0, new StaticStack<Integer>(15).size())),
-                dynamicTest("A cleared stack return with 0 size.", () -> {
+                dynamicTest("A cleared stack returns with 0 size.", () -> {
                     stack.push(5);
                     stack.clear();
                     assertEquals(0, stack.size());
@@ -105,7 +105,7 @@ class StaticStackTest {
         };
     }
 
-    @DisplayName("clear(): Clear removes all items from the stack.")
+    @DisplayName("clear(): Clearing the stack removes all items from it.")
     @Test
     void clear() {
         assertTrue(0 < stack.size()); // Sanity check for proper before each setup.
